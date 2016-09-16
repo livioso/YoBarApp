@@ -1,0 +1,30 @@
+{
+  "name": "App",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node node_modules/react-native/local-cli/cli.js start -- --reset-cache",
+    "packager:kill": "lsof -n -i4TCP:8081 | sed '1 d' | awk '{print $2}' | xargs kill",
+    "bundle": "react-native bundle --platform ios --entry-file index.ios.js --bundle-output ./main.jsbundle --assets-dest ./release --dev false",
+    "test": "node node_modules/mocha/bin/mocha --compilers js:babel-register --recursive --timeout 3000",
+    "test:watch": "npm test -- --watch",
+    "lint": "node ./node_modules/eslint/bin/eslint.js --config .eslintrc index.android.js index.ios.js App/ __tests__/ || true",
+    "lint:fix": "node ./node_modules/eslint/bin/eslint.js --fix --config .eslintrc index.android.js index.ios.js App/ || true"
+  },
+  "dependencies": {
+    "babel-eslint": "^6.1.2",
+    "eslint": "^3.5.0",
+    "react": "15.3.1",
+    "react-native": "^0.33.0",
+    "react-redux": "^4.4.5",
+    "redux": "^3.6.0",
+    "redux-saga": "^0.11.1"
+  },
+  "devDependencies": {
+    "eslint-config-airbnb": "^11.1.0",
+    "eslint-plugin-immutable": "^1.0.0",
+    "eslint-plugin-import": "^1.15.0",
+    "eslint-plugin-jsx-a11y": "^2.2.2",
+    "eslint-plugin-react": "^6.2.2"
+  }
+}
