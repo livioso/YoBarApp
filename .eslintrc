@@ -5,7 +5,7 @@
     "immutable"
   ],
   "rules": {
-    "react/prop-types",
+    "react/prop-types": 0,
     "comma-dangle": 0,
     "import/prefer-default-export": 0,
     "complexity": [2, 5],

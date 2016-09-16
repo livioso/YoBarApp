@@ -26,10 +26,10 @@ const styles = StyleSheet.create({
 
 // connect view with its data
 export default connect(
-  (state) => ({
-  ...state.app
+  state => ({
+    ...state.app
   }),
-  (dispatch) => ({
+  dispatch => ({
     ...bindActionCreators(appActions, dispatch)
   })
 )(StartupView);
