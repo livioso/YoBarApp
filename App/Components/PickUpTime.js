@@ -55,9 +55,9 @@ class PickUpTime extends React.Component {
           <View>
             <Text style={styles.heading}>Your Yoghurt: </Text>
             <SummaryItem title="Cereal" text={this.props.order.yogurtOrder.cereal} />
-            <SummaryItem title="Fruits" text={this.props.order.yogurtOrder.fruechte} />
+            <SummaryItem title="Fruits" text={this.props.order.yogurtOrder.fruits} />
             <SummaryItem title="Yogurt" text={this.props.order.yogurtOrder.yogurt} />
-            <SummaryItem title="Sauce" text={this.props.order.yogurtOrder.marmelade} />
+            <SummaryItem title="Sauce" text={this.props.order.yogurtOrder.sauce} />
 
             <Text style={styles.heading}>Order summary</Text>
             <SummaryItem title="Pickup location: " text={this.props.order.pickupLocation} />
