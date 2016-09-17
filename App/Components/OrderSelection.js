@@ -34,9 +34,18 @@ const OrderSelection = ({ nextStep }) => {
         <View style={{ marginTop: 10 }}>
           <Button text="Create your own" onPress={() => nextStep()} />
         </View>
-        <View style={{ marginTop: 10, flex: 1, flexDirection: 'row', alignItems: 'center' }}>
-          <Button text="Classics" />
-          <Button text="Seasonal Hits" />
+        <Text style={{ fontWeight: 'bold', fontSize: 18, marginTop: 40 }}>Best sellers</Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <Image
+            resizeMode="contain"
+            style={styles.image}
+            source={require('../../assets/images/AvocadoAffair.png')}
+          />
+          <Image
+            resizeMode="contain"
+            style={styles.image}
+            source={require('../../assets/images/KiwiKarma.png')}
+          />
         </View>
       </View>
     </View>
