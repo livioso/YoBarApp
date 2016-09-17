@@ -1,3 +1,5 @@
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import React from 'react';
 import {
   Text,
@@ -7,10 +9,11 @@ import {
   Image
 } from 'react-native';
 
+import * as appActions from '../Actions/appActions';
 import { NavigationBar } from './Elements/NavigationBar';
 import { Button } from './Elements/Button';
 
-export const OrderSelection = ({ updateOrder }) => {
+const OrderSelection = ({ updateOrder }) => {
   return (
     <View>
       <NavigationBar title="Order" />
@@ -47,3 +50,13 @@ const styles = StyleSheet.create({
     width: 150,
   }
 });
+
+// connect view with its data
+export default connect(
+  state => ({
+    ...state.app
+  }),
+  dispatch => ({
+    ...bindActionCreators(appActions, dispatch)
+  })
+)(OrderSelection);
