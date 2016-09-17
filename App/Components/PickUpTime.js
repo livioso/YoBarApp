@@ -31,7 +31,7 @@ class PickUpTime extends React.Component {
   }
 
   formatDate = (date) => {
-    return moment(date).add(5, 'minutes').format('hh:mm');
+    return moment(date).format('hh:mm a');
   }
 
   dateSelection = (nextStep, updateOrder) => {
