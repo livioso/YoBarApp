@@ -4,6 +4,10 @@
   "plugins": [
     "immutable"
   ],
+  "environment": [
+    "fetch",
+    "alert"
+  ],
   "rules": {
     "react/prop-types": 0,
     "comma-dangle": 0,

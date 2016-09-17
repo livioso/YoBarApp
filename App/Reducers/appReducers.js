@@ -7,12 +7,13 @@ import {
 } from '../Actions/appActions';
 
 const Order = new Record({
+  id: '99',
   customer: 'Sepp Blatter',
   pickupLocation: 'Zurich',
   pickupTime: moment().add('minutes', 5),
-  yoghurt: undefined,
-  paid: false,
+  paid: false, // user already paid ;)
   orderPlaced: false,
+  yoghurt: undefined,
 });
 
 const initialState = {
