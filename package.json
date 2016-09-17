@@ -16,7 +16,6 @@
     "eslint": "^3.5.0",
     "immutable": "^3.8.1",
     "moment": "^2.15.0",
-    "node-sparky": "^3.1.17",
     "react": "15.3.1",
     "react-native": "^0.33.0",
     "react-redux": "^4.4.5",
