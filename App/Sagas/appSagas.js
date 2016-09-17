@@ -1,9 +1,18 @@
-import { put, call } from 'redux-saga/effects';
-import { delay } from 'redux-saga';
-import { startupDone } from '../Actions/appActions';
+import { takeLatest } from 'redux-saga';
+import { put, call, select } from 'redux-saga/effects';
+import { PLACE_ORDER } from '../Actions/appActions';
 
-// eslint-disable-next-line import/prefer-default-export
 export function* startup() {
-  yield call(delay, 2000);
-  yield put(startupDone());
+  // do some initial fetching ;)
+}
+
+export function* watchPlaceOrder() {
+  yield* takeLatest(PLACE_ORDER, placeOrder);
+}
+
+function* placeOrder() {
+  const { order } = yield select(state => state.app);
+
+  // TODO (livioso 17.09.2016) call tropo form here
+  console.log(order);
 }

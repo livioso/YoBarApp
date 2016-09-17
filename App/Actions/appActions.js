@@ -1,10 +1,11 @@
-export const STARTUP = 'STARTUP';
-export const STARTUP_DONE = 'STARTUP_DONE';
+export const UPDATE_ORDER = 'UPDATE_ORDER';
+export const PLACE_ORDER = 'PLACE_ORDER';
 
-export const doStartup = () => ({
-  type: STARTUP
+export const updateOrder = update => ({
+  type: UPDATE_ORDER,
+  update
 });
 
-export const startupDone = () => ({
-  type: STARTUP_DONE
+export const placeOrder = () => ({
+  type: PLACE_ORDER
 });

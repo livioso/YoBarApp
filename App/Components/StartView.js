@@ -4,16 +4,21 @@ import React from 'react';
 import {
   Text,
   View,
-  StyleSheet
+  StyleSheet,
+  TouchableOpacity
 } from 'react-native';
 
 import * as appActions from '../Actions/appActions';
 
-const StartupView = ({ message = 'o/' }) => (
-  <View style={styles.app}>
-    <Text>{message}</Text>
-  </View>
-);
+const StartupView = ({ placeOrder }) => {
+  return (
+    <View style={styles.app}>
+      <TouchableOpacity onPress={placeOrder}>
+        <Text>Place Order</Text>
+      </TouchableOpacity>
+    </View>
+  );
+};
 
 const styles = StyleSheet.create({
   app: {
