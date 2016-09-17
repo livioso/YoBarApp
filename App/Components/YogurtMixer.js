@@ -24,10 +24,8 @@ export default class YogurtMixer extends Component {
       }
     };
 
-    this.fooo = 'bar';
-
-    this.yogurtOptions = [
-      {
+    this.yogurtOptions = {
+      cereal: {
         name: 'cereal',
         options: [
           { name: 'Granola', image: require('../../assets/images/ingredients/granola.jpg') },
@@ -35,7 +33,7 @@ export default class YogurtMixer extends Component {
           { name: 'Haferflocken', image: require('../../assets/images/ingredients/Haferflocken.jpg') }
         ]
       },
-      {
+      fruechte: {
         name: 'fruechte',
         options: [
           { name: 'Banane', image: require('../../assets/images/ingredients/bananen.jpg') },
@@ -44,7 +42,7 @@ export default class YogurtMixer extends Component {
           { name: 'Trauben', image: require('../../assets/images/ingredients/Trauben.jpg') }
         ]
       },
-      {
+      yogurt: {
         name: 'yogurt',
         options: [
           { name: 'Nature Yogurt', image: require('../../assets/images/ingredients/Joghurt_Weiss.jpg') },
@@ -52,27 +50,37 @@ export default class YogurtMixer extends Component {
           { name: 'Heidelbeer Yogurt', image: require('../../assets/images/ingredients/Joghurt_Pink.jpg') }
         ]
       },
-      {
+      marmelade: {
         name: 'marmelade',
         options: [
           { name: 'Marmelade', image: require('../../assets/images/ingredients/Marmelade.jpg') },
           { name: 'Marmelade Orange', image: require('../../assets/images/ingredients/Marmelade_orange.jpg') }
         ]
       }
-    ];
+    };
     /* eslint-enable immutable/no-mutation */
+  }
+
+  componentWillMount = () => {
+    const newYogurt = this.state.myYogurt;
+    Object.keys(this.yogurtOptions).map(layer => (
+      newYogurt[layer] = this.yogurtOptions[layer].options[0].name // eslint-disable-line immutable/no-mutation
+    ));
+    this.setState({
+      myYogurt: newYogurt
+    });
   }
 
   updateMyYogurt = (layer, value) => {
     const newYogurt = this.state.myYogurt;
-    newYogurt[layer] = value - 1; // eslint-disable-line immutable/no-mutation
+    newYogurt[layer] = this.yogurtOptions[layer].options[value - 1].name; // eslint-disable-line immutable/no-mutation
     this.setState({
       myYogurt: newYogurt
     });
   }
 
   sendMyYogurt = () => {
-    console.warn('DO STUFF!!!');
+    console.warn("do redux stuff");
   }
 
   render = () => {
@@ -81,20 +89,20 @@ export default class YogurtMixer extends Component {
         <NavigationBar title="Create your own" />
         <View style={{ marginBottom: 20 }}>
           {
-            this.yogurtOptions.map(layer => (
+            Object.keys(this.yogurtOptions).map(layer => (
               <SwipeCarousel
-                key={layer.name}
+                key={layer}
                 style={StyleSheet.flatten(styles.carousel)}
                 update={this.updateMyYogurt}
-                layer={layer.name}
+                layer={layer}
               >
-                {
-                  layer.options.map(option => (
-                    <View key={option.name} style={styles.panel}>
-                      <Image style={styles.image} source={option.image} />
-                    </View>
-                  ))
-                }
+              {
+                this.yogurtOptions[layer].options.map(option => (
+                  <View key={option.name} style={styles.panel}>
+                    <Image style={styles.image} source={option.image} />
+                  </View>
+                ))
+              }
               </SwipeCarousel>
             ))
           }
