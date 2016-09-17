@@ -21,7 +21,7 @@ export const NavigationBar = ({ goToBack, title }) => {
     >
       <Text
         style={{
-          fontSize: 24,
+          fontSize: 18,
           fontWeight: 'bold',
           color: '#FFF',
           marginTop: 10,

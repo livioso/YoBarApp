@@ -7,6 +7,8 @@ import {
   Image
 } from 'react-native';
 
+import { Button } from './Elements/Button';
+
 export const WelcomeScreen = ({ updateOrder }) => {
   return (
     <View style={styles.welcome}>
@@ -57,12 +59,8 @@ export const WelcomeScreen = ({ updateOrder }) => {
             marginTop: 30,
           }}
         >
-          <TouchableOpacity style={styles.button} onPress={updateOrder}>
-            <Text style={styles.buttonText}>Luzern</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.button} onPress={updateOrder}>
-            <Text style={styles.buttonText}>Zürich</Text>
-          </TouchableOpacity>
+          <Button text="Luzern" onPress={updateOrder} />
+          <Button text="Zürich" onPress={updateOrder} />
         </View>
       </View>
     </View>
@@ -75,20 +73,5 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     alignItems: 'center',
-  },
-  button: {
-    flex: 1,
-    height: 140,
-    backgroundColor: '#D12CAD',
-    borderRadius: 5,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginLeft: 10,
-    marginRight: 10,
-  },
-  buttonText: {
-    color: '#FFF',
-    fontSize: 30,
-    fontWeight: 'bold',
   }
 });

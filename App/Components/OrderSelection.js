@@ -7,7 +7,8 @@ import {
   Image
 } from 'react-native';
 
-import { NavigationBar } from './NavigationBar';
+import { NavigationBar } from './Elements/NavigationBar';
+import { Button } from './Elements/Button';
 
 export const OrderSelection = ({ updateOrder }) => {
   return (
@@ -28,17 +29,11 @@ export const OrderSelection = ({ updateOrder }) => {
           />
         </View>
         <View style={{ marginTop: 10 }}>
-          <TouchableOpacity style={styles.button}>
-            <Text style={styles.buttonText}>Create your own</Text>
-          </TouchableOpacity>
+          <Button text="Create your own" />
         </View>
         <View style={{ marginTop: 10, flex: 1, flexDirection: 'row', alignItems: 'center' }}>
-          <TouchableOpacity style={styles.button}>
-            <Text style={styles.buttonText}>Classics</Text>
-          </TouchableOpacity>
-          <TouchableOpacity style={styles.button}>
-            <Text style={styles.buttonText}>Seasonal Hits</Text>
-          </TouchableOpacity>
+          <Button text="Classics" />
+          <Button text="Seasonal Hits" />
         </View>
       </View>
     </View>
@@ -50,20 +45,5 @@ const styles = StyleSheet.create({
     flex: 1,
     height: 150,
     width: 150,
-  },
-  button: {
-    flex: 1,
-    height: 60,
-    backgroundColor: '#D12CAD',
-    borderRadius: 5,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginLeft: 10,
-    marginRight: 10,
-  },
-  buttonText: {
-    color: '#FFF',
-    fontSize: 20,
-    fontWeight: 'bold',
   }
 });
