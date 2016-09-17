@@ -14,7 +14,7 @@ const Order = new Record({
   pickupTime: '',
   paid: false, // user already paid ;)
   orderPlaced: false,
-  yoghurt: undefined,
+  yogurtOrder: undefined,
 });
 
 const initialState = {
@@ -38,7 +38,7 @@ const app = (state = initialState, action) => { // eslint-disable-line complexit
       };
     }
     case NEXT_STEP: {
-      if (state.orderingStep === 3) { // TODO: change to 4
+      if (state.orderingStep === 4) {
         return {
           ...state,
           message: `Hi Yves! \n You\'re Yoghurt is ready at ${state.order.pickupTime}. \n Pickup code: #${state.order.id} \n Make another order:`,
