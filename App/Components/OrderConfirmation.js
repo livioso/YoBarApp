@@ -12,10 +12,10 @@ import { Button } from './Elements/Button';
 
 import * as appActions from '../Actions/appActions';
 
-const OrderConfirmation = ({ order, nextStep }) => {
+const OrderConfirmation = ({ order, nextStep, prevStep }) => {
   return (
     <View>
-      <NavigationBar title="Order confirmation" />
+      <NavigationBar title="Order confirmation" prevStep={prevStep} />
       <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: 100 }}>
         <Text style={{ fontSize: 24 }}>Great, we'll have it ready at {order.pickupTime}</Text>
         <View style={{ marginTop: 20 }}>

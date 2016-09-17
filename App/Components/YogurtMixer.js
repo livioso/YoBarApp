@@ -87,7 +87,7 @@ export class YogurtMixer extends Component {
   render = () => {
     return (
       <View>
-        <NavigationBar title="Create your own" />
+        <NavigationBar title="Create your own" prevStep={this.props.prevStep} />
         <View style={{ marginBottom: 20 }}>
           {
             Object.keys(this.yogurtOptions).map(layer => (

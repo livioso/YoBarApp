@@ -5,6 +5,7 @@ import {
   UPDATE_ORDER,
   PLACE_ORDER,
   NEXT_STEP,
+  PREV_STEP,
 } from '../Actions/appActions';
 
 const Order = new Record({
@@ -48,6 +49,12 @@ const app = (state = initialState, action) => { // eslint-disable-line complexit
       return {
         ...state,
         orderingStep: state.orderingStep + 1
+      };
+    }
+    case PREV_STEP: {
+      return {
+        ...state,
+        orderingStep: state.orderingStep - 1
       };
     }
     default:

@@ -13,10 +13,10 @@ import * as appActions from '../Actions/appActions';
 import { NavigationBar } from './Elements/NavigationBar';
 import { Button } from './Elements/Button';
 
-const OrderSelection = ({ nextStep }) => {
+const OrderSelection = ({ nextStep, prevStep }) => {
   return (
     <View>
-      <NavigationBar title="Order" />
+      <NavigationBar title="Order" prevStep={prevStep} />
       <View style={{ margin: 10 }}>
         <Text style={{ fontWeight: 'bold', fontSize: 18 }}>Recently ordered</Text>
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>

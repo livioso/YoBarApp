@@ -44,7 +44,7 @@ class PickUpTime extends React.Component {
   render() {
     return (
       <View>
-        <NavigationBar title="Pick up time" />
+        <NavigationBar title="Pick up time" prevStep={this.props.prevStep} />
         <DatePickerIOS date={this.state.date} mode="time" onDateChange={this.onDateChange} />
         <View
           style={{

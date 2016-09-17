@@ -1,6 +1,7 @@
 export const UPDATE_ORDER = 'UPDATE_ORDER';
 export const PLACE_ORDER = 'PLACE_ORDER';
 export const NEXT_STEP = 'NEXT_STEP';
+export const PREV_STEP = 'PREV_STEP';
 
 export const updateOrder = update => ({
   type: UPDATE_ORDER,
@@ -13,4 +14,8 @@ export const placeOrder = () => ({
 
 export const nextStep = () => ({
   type: NEXT_STEP
+});
+
+export const prevStep = () => ({
+  type: PREV_STEP
 });
