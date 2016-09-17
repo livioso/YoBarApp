@@ -1,7 +1,8 @@
 import React from 'react';
 import {
   View,
-  DatePickerIOS
+  DatePickerIOS,
+  Text
 } from 'react-native';
 
 import { NavigationBar } from './Elements/NavigationBar';
@@ -28,6 +29,17 @@ export class PickUpTime extends React.Component {
       <View>
         <NavigationBar title="Pick up time" />
         <DatePickerIOS date={this.state.date} mode="time" onDateChange={this.onDateChange} />
+        <View
+          style={{
+            alignItems: 'center',
+            marginTop: 20,
+            marginBottom: 20,
+          }}
+        >
+          <Text style={{ fontSize: 16 }}>
+            Order Summary
+          </Text>
+        </View>
         <Button text="Place order" />
       </View>
     );
