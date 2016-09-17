@@ -213,6 +213,8 @@ export default class SwipeCarousel extends Component {
       current: currentPage
     });
 
+    this.props.update(this.props.layer, currentPage);
+
     if (!pageChanged) {
       this.setPositionAnimated(this._previousPosition);
     }
@@ -394,5 +396,6 @@ export default class SwipeCarousel extends Component {
 SwipeCarousel.propTypes = { // eslint-disable-line immutable/no-mutation
   animation: React.PropTypes.object,
   style: React.PropTypes.object,
+  update: React.PropTypes.func,
   indicators: React.PropTypes.bool
 };
