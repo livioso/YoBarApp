@@ -1,6 +1,7 @@
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import React from 'react';
+import moment from 'moment';
 import {
   View,
   DatePickerIOS,
@@ -23,13 +24,17 @@ class PickUpTime extends React.Component {
 
   onDateChange = (date) => {
     this.setState({
-      date
+      date: this.formatDate(date)
     });
+  }
+
+  formatDate = (date) => {
+    return moment(date).add(5, 'minutes').format('hh:mm');
   }
 
   dateSelection = (nextStep, updateOrder) => {
     updateOrder({
-      pickupTime: this.state.date
+      pickupTime: this.formatDate(this.state.date)
     });
     nextStep();
   }
