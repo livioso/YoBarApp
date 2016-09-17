@@ -1,5 +1,10 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  Dimensions
+} from 'react-native';
 import SwipeCarousel from './Components/Elements/SwipeCarousel';
 
 export const Playground = () => {
@@ -8,11 +13,26 @@ export const Playground = () => {
   );
 };
 
+
+const window = Dimensions.get('window');
+
 const Carousel = () => (
   <View>
     <SwipeCarousel style={{ height: 200 }}>
-      <View style={{ flex: 1, backgroundColor: 'red' }}><Text>one</Text></View>
-      <View style={{ flex: 1, backgroundColor: 'blue' }}><Text>two</Text></View>
+      <View style={{ flex: 1, backgroundColor: 'red', flexDirection: 'row' }}>
+        <Image
+          style={{ width: window.width / 2, height: 200, resizeMode: 'contain', backgroundColor: 'white' }}
+          source={require('./Assets/Images/yogurt.jpg')}
+        />
+        <Text>one</Text>
+      </View>
+      <View style={{ flex: 1, backgroundColor: 'blue' }}>
+        <Image
+          style={{ width: window.width / 2, height: 200, resizeMode: 'contain', backgroundColor: 'white' }}
+          source={require('./Assets/Images/yogurt.jpg')}
+        />
+        <Text>two</Text>
+      </View>
       <View style={{ flex: 1, backgroundColor: 'green' }}><Text>three</Text></View>
     </SwipeCarousel>
 
