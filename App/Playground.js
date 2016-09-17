@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text } from 'react-native';
-import SwipeCarousel from 'react-native-swipe-carousel';
+import SwipeCarousel from './Components/Elements/SwipeCarousel';
 
 export const Playground = () => {
   return (
