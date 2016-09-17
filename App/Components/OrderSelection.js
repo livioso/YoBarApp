@@ -27,7 +27,7 @@ const OrderSelection = ({ nextStep, prevStep, updateOrder }) => {
       <NavigationBar title="Order" prevStep={prevStep} />
       <View style={{ margin: 10 }}>
         <Text style={{ fontWeight: 'bold', fontSize: 18 }}>Recently ordered</Text>
-        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', marginLeft: 15 }}>
           <TouchableOpacity
             onPress={() => setDirectOrder({
               cereal: 'YoBar Muesli',
@@ -61,7 +61,7 @@ const OrderSelection = ({ nextStep, prevStep, updateOrder }) => {
           <Button text="Create your own" onPress={() => nextStep()} />
         </View>
         <Text style={{ fontWeight: 'bold', fontSize: 18, marginTop: 40 }}>Best sellers</Text>
-        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+        <View style={{ flexDirection: 'row', alignItems: 'center', marginLeft: 15 }}>
           <TouchableOpacity
             onPress={() => setDirectOrder({
               cereal: 'YoBar Muesli',
