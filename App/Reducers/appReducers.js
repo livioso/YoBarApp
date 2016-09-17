@@ -41,7 +41,7 @@ const app = (state = initialState, action) => { // eslint-disable-line complexit
       if (state.orderingStep === 4) {
         return {
           ...state,
-          message: `Hi Yves, you\'re Yoghurt is ready at ${state.order.pickupTime}. \n\n Pickup code: #${state.order.id}`,
+          message: `Hi Yves, you\'re Yoghurt is ready in ${state.order.pickupLocation} at ${state.order.pickupTime}. \n\n Pickup code: #${state.order.id}`,
           orderingStep: 0,
         };
       }
