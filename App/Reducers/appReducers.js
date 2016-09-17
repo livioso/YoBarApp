@@ -11,7 +11,7 @@ const Order = new Record({
   id: '99',
   customer: 'Sepp Blatter',
   pickupLocation: 'Zurich',
-  pickupTime: moment().add('minutes', 5),
+  pickupTime: '',
   paid: false, // user already paid ;)
   orderPlaced: false,
   yoghurt: undefined,
@@ -19,6 +19,7 @@ const Order = new Record({
 
 const initialState = {
   orderingStep: 0,
+  message: 'Good Morning, Yves!',
   order: new Order()
 };
 
@@ -40,7 +41,8 @@ const app = (state = initialState, action) => { // eslint-disable-line complexit
       if (state.orderingStep === 3) { // TODO: change to 4
         return {
           ...state,
-          orderingStep: 0
+          message: `Hi Yves! \n You\'re Yoghurt is ready at ${state.order.pickupTime}. \n Pickup code: #${state.order.id} \n Make another order:`,
+          orderingStep: 0,
         };
       }
       return {
