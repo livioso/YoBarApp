@@ -23,6 +23,10 @@ export function* watchPlaceOrder() {
 function* placeOrder() {
   const { order } = yield select(state => state.app);
   const message = orderToMarkdown(order);
+
+  // this retarded format is necessary
+  // JSON.Stringify is possible: \n\t
+  // is required. :)
   const payload = {
     method: 'POST',
     body: `{
