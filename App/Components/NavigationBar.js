@@ -3,7 +3,10 @@ import {
   Text,
   View,
   TouchableOpacity,
+  StatusBar
 } from 'react-native';
+
+StatusBar.setBarStyle('light-content', true);
 
 export const NavigationBar = ({ goToBack, title }) => {
   return (
