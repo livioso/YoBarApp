@@ -37,6 +37,12 @@ const app = (state = initialState, action) => { // eslint-disable-line complexit
       };
     }
     case NEXT_STEP: {
+      if (state.orderingStep === 3) { // TODO: change to 4
+        return {
+          ...state,
+          orderingStep: 0
+        };
+      }
       return {
         ...state,
         orderingStep: state.orderingStep + 1
