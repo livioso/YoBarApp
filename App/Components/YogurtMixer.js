@@ -1,3 +1,5 @@
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import React, { Component } from 'react';
 import {
   View,
@@ -6,22 +8,18 @@ import {
   Dimensions
 } from 'react-native';
 
+import * as appActions from '../Actions/appActions';
 import SwipeCarousel from './Elements/SwipeCarousel';
 import { NavigationBar } from './Elements/NavigationBar';
 import { Button } from './Elements/Button';
 
-export default class YogurtMixer extends Component {
+export class YogurtMixer extends Component {
 
   constructor(props) {
     super(props);
     /* eslint-disable immutable/no-mutation, no-underscore-dangle */
     this.state = {
-      myYogurt: {
-        yogurt: 0,
-        fruechte: 0,
-        cereal: 0,
-        marmelade: 0
-      }
+      myYogurt: {}
     };
 
     this.yogurtOptions = {
@@ -80,7 +78,10 @@ export default class YogurtMixer extends Component {
   }
 
   sendMyYogurt = () => {
-    console.warn("do redux stuff");
+    this.props.updateOrder({
+      yogurtOrder: this.state.myYogurt
+    });
+    this.props.nextStep();
   }
 
   render = () => {
@@ -134,3 +135,12 @@ const styles = StyleSheet.create({
     resizeMode: 'cover',
   }
 });
+
+export default connect(
+  state => ({
+    ...state.app
+  }),
+  dispatch => ({
+    ...bindActionCreators(appActions, dispatch)
+  })
+)(YogurtMixer);
