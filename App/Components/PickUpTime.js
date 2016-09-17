@@ -1,3 +1,5 @@
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import React from 'react';
 import {
   View,
@@ -8,7 +10,9 @@ import {
 import { NavigationBar } from './Elements/NavigationBar';
 import { Button } from './Elements/Button';
 
-export class PickUpTime extends React.Component {
+import * as appActions from '../Actions/appActions';
+
+class PickUpTime extends React.Component {
   constructor() {
     super();
 
@@ -21,6 +25,13 @@ export class PickUpTime extends React.Component {
     this.setState({
       date
     });
+  }
+
+  dateSelection = (nextStep, updateOrder) => {
+    updateOrder({
+      pickupTime: this.state.date
+    });
+    nextStep();
   }
 
   render() {
@@ -39,8 +50,21 @@ export class PickUpTime extends React.Component {
             Order Summary
           </Text>
         </View>
-        <Button text="Place order" />
+        <Button
+          text="Place order"
+          onPress={() => this.dateSelection(this.props.nextStep, this.props.updateOrder)}
+        />
       </View>
     );
   }
 }
+
+// connect view with its data
+export default connect(
+  state => ({
+    ...state.app
+  }),
+  dispatch => ({
+    ...bindActionCreators(appActions, dispatch)
+  })
+)(PickUpTime);

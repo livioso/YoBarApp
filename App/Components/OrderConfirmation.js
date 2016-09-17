@@ -1,3 +1,6 @@
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+
 import React from 'react';
 import {
   View,
@@ -7,7 +10,9 @@ import {
 import { NavigationBar } from './Elements/NavigationBar';
 import { Button } from './Elements/Button';
 
-export const OrderConfirmation = () => {
+import * as appActions from '../Actions/appActions';
+
+const OrderConfirmation = () => {
   return (
     <View>
       <NavigationBar title="Order confirmation" />
@@ -19,9 +24,19 @@ export const OrderConfirmation = () => {
           </Text>
         </View>
         <View style={{ marginTop: 100, flexDirection: 'row' }}>
-          <Button text="Home" />
+          <Button text="Home" onPress={() => this.props.nextStep()} />
         </View>
       </View>
     </View>
   );
 };
+
+// connect view with its data
+export default connect(
+  state => ({
+    ...state.app
+  }),
+  dispatch => ({
+    ...bindActionCreators(appActions, dispatch)
+  })
+)(OrderConfirmation);
