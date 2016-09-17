@@ -5,8 +5,10 @@ import {
   View,
   Image,
   StyleSheet,
-  Dimensions
+  Dimensions,
+  Text
 } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 
 import * as appActions from '../Actions/appActions';
 import SwipeCarousel from './Elements/SwipeCarousel';
@@ -100,7 +102,13 @@ export class YogurtMixer extends Component {
               {
                 this.yogurtOptions[layer].options.map(option => (
                   <View key={option.name} style={styles.panel}>
-                    <Image style={styles.image} source={option.image} />
+                    <Image style={styles.image} source={option.image}>
+                      <LinearGradient colors={['transparent', '#df8cce']} locations={[0, 1]} style={styles.linearGradient}>
+                        <Text style={styles.text}>
+                          {option.name}
+                        </Text>
+                      </LinearGradient>
+                    </Image>
                   </View>
                 ))
               }
@@ -132,7 +140,23 @@ const styles = StyleSheet.create({
     width: window.width,
     height: panelHeight,
     resizeMode: 'cover',
-  }
+    flexDirection: 'column',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+  },
+  linearGradient: {
+    alignItems: 'center',
+    alignSelf: 'stretch',
+    flexDirection: 'column',
+    justifyContent: 'flex-end',
+    flex: 1,
+  },
+  text: {
+    color: '#fff',
+    fontWeight: 'bold',
+    backgroundColor: 'transparent',
+    marginBottom: 5,
+  },
 });
 
 export default connect(
