@@ -1,3 +1,5 @@
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import React from 'react';
 import {
   Text,
@@ -7,9 +9,17 @@ import {
   Image
 } from 'react-native';
 
+import * as appActions from '../Actions/appActions';
 import { Button } from './Elements/Button';
 
-export const WelcomeScreen = ({ updateOrder }) => {
+const citySelection = (city, nextStep, updateOrder) => {
+  updateOrder({
+    pickupLocation: city
+  });
+  nextStep();
+};
+
+const WelcomeScreen = ({ nextStep, updateOrder }) => {
   return (
     <View style={styles.welcome}>
       <Image
@@ -59,8 +69,8 @@ export const WelcomeScreen = ({ updateOrder }) => {
             marginTop: 30,
           }}
         >
-          <Button text="Luzern" onPress={updateOrder} />
-          <Button text="Zürich" onPress={updateOrder} />
+          <Button text="Luzern" onPress={() => citySelection('Luzern', nextStep, updateOrder)} />
+          <Button text="Zürich" onPress={() => citySelection('Zurich', nextStep, updateOrder)} />
         </View>
       </View>
     </View>
@@ -75,3 +85,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   }
 });
+
+
+// connect view with its data
+export default connect(
+  state => ({
+    ...state.app
+  }),
+  dispatch => ({
+    ...bindActionCreators(appActions, dispatch)
+  })
+)(WelcomeScreen);
