@@ -5,11 +5,13 @@ import moment from 'moment';
 import {
   View,
   DatePickerIOS,
-  Text
+  Text,
+  StyleSheet
 } from 'react-native';
 
 import { NavigationBar } from './Elements/NavigationBar';
 import { Button } from './Elements/Button';
+import { SummaryItem } from './Elements/SummaryItem';
 
 import * as appActions from '../Actions/appActions';
 
@@ -47,13 +49,20 @@ class PickUpTime extends React.Component {
         <View
           style={{
             alignItems: 'center',
-            marginTop: 20,
-            marginBottom: 20,
+            marginBottom: 40,
           }}
         >
-          <Text style={{ fontSize: 16 }}>
-            Order Summary
-          </Text>
+          <View>
+            <Text style={styles.heading}>Your Yoghurt: </Text>
+            <SummaryItem title="Cereal" text={this.props.order.yogurtOrder.cereal} />
+            <SummaryItem title="Fruits" text={this.props.order.yogurtOrder.fruechte} />
+            <SummaryItem title="Yogurt" text={this.props.order.yogurtOrder.yogurt} />
+            <SummaryItem title="Sauce" text={this.props.order.yogurtOrder.marmelade} />
+
+            <Text style={styles.heading}>Order summary</Text>
+            <SummaryItem title="Pickup location: " text={this.props.order.pickupLocation} />
+            <SummaryItem title="Pickup time: " text={this.formatDate(this.state.date)} />
+          </View>
         </View>
         <Button
           text="Place order"
@@ -63,6 +72,15 @@ class PickUpTime extends React.Component {
     );
   }
 }
+
+const styles = StyleSheet.create({
+  heading: {
+    marginTop: 20,
+    marginBottom: 10,
+    fontSize: 20,
+    fontWeight: 'bold'
+  }
+});
 
 // connect view with its data
 export default connect(
