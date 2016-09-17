@@ -126,7 +126,6 @@ const styles = StyleSheet.create({
   },
   panel: {
     flex: 1,
-    backgroundColor: 'red',
     flexDirection: 'row'
   },
   image: {
