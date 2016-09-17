@@ -12,15 +12,15 @@ import { Button } from './Elements/Button';
 
 import * as appActions from '../Actions/appActions';
 
-const OrderConfirmation = ({ nextStep }) => {
+const OrderConfirmation = ({ order, nextStep }) => {
   return (
     <View>
       <NavigationBar title="Order confirmation" />
       <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: 100 }}>
-        <Text style={{ fontSize: 24 }}>Great, we'll have it ready at 10:15</Text>
+        <Text style={{ fontSize: 24 }}>Great, we'll have it ready at {order.pickupTime}</Text>
         <View style={{ marginTop: 20 }}>
           <Text style={{ fontSize: 24 }}>
-            Your order ID is <Text style={{ fontWeight: 'bold' }}>#347</Text>
+            Your order ID is <Text style={{ fontWeight: 'bold' }}>#{order.id}</Text>
           </Text>
         </View>
         <View style={{ marginTop: 100, flexDirection: 'row' }}>
