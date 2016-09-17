@@ -24,7 +24,7 @@ class PickUpTime extends React.Component {
 
   onDateChange = (date) => {
     this.setState({
-      date: this.formatDate(date)
+      date
     });
   }
 
