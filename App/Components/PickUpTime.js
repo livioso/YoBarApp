@@ -8,7 +8,6 @@ import {
 import { NavigationBar } from './Elements/NavigationBar';
 import { Button } from './Elements/Button';
 
-
 export class PickUpTime extends React.Component {
   constructor() {
     super();
