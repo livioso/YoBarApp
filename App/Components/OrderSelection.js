@@ -13,7 +13,7 @@ import * as appActions from '../Actions/appActions';
 import { NavigationBar } from './Elements/NavigationBar';
 import { Button } from './Elements/Button';
 
-const OrderSelection = ({ updateOrder }) => {
+const OrderSelection = ({ nextStep }) => {
   return (
     <View>
       <NavigationBar title="Order" />
@@ -32,7 +32,7 @@ const OrderSelection = ({ updateOrder }) => {
           />
         </View>
         <View style={{ marginTop: 10 }}>
-          <Button text="Create your own" />
+          <Button text="Create your own" onPress={() => nextStep()} />
         </View>
         <View style={{ marginTop: 10, flex: 1, flexDirection: 'row', alignItems: 'center' }}>
           <Button text="Classics" />

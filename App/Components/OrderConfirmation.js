@@ -12,7 +12,7 @@ import { Button } from './Elements/Button';
 
 import * as appActions from '../Actions/appActions';
 
-const OrderConfirmation = () => {
+const OrderConfirmation = ({ nextStep }) => {
   return (
     <View>
       <NavigationBar title="Order confirmation" />
@@ -24,7 +24,7 @@ const OrderConfirmation = () => {
           </Text>
         </View>
         <View style={{ marginTop: 100, flexDirection: 'row' }}>
-          <Button text="Home" onPress={() => this.props.nextStep()} />
+          <Button text="Home" onPress={() => nextStep()} />
         </View>
       </View>
     </View>
