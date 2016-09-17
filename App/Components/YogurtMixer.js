@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
 import {
   View,
-  Text,
   Image,
   StyleSheet,
   Dimensions
 } from 'react-native';
 
 import SwipeCarousel from './Elements/SwipeCarousel';
+import { NavigationBar } from './Elements/NavigationBar';
+import { Button } from './Elements/Button';
 
 export default class YogurtMixer extends Component {
 
@@ -18,8 +19,8 @@ export default class YogurtMixer extends Component {
       myYogurt: {
         yogurt: 0,
         fruechte: 0,
-        nuesse: 0,
-        confiture: 0
+        cereal: 0,
+        marmelade: 0
       }
     };
 
@@ -27,35 +28,35 @@ export default class YogurtMixer extends Component {
 
     this.yogurtOptions = [
       {
-        name: 'yogurt',
+        name: 'cereal',
         options: [
-          { name: 'Nature Yogurt', image: require('../Assets/Images/yogurt.jpg') },
-          { name: 'Erdbeer Yogurt', image: require('../Assets/Images/yogurt.jpg') },
-          { name: 'Honig Yogurt', image: require('../Assets/Images/yogurt.jpg') }
+          { name: 'Granola', image: require('../../assets/images/ingredients/granola.jpg') },
+          { name: 'Cornflakes', image: require('../../assets/images/ingredients/Cornflakes.jpg') },
+          { name: 'Haferflocken', image: require('../../assets/images/ingredients/Haferflocken.jpg') }
         ]
       },
       {
         name: 'fruechte',
         options: [
-          { name: 'Banane', image: require('../Assets/Images/yogurt.jpg') },
-          { name: 'Kiwi', image: require('../Assets/Images/yogurt.jpg') },
-          { name: 'Mango', image: require('../Assets/Images/yogurt.jpg') }
+          { name: 'Banane', image: require('../../assets/images/ingredients/bananen.jpg') },
+          { name: 'Kiwi', image: require('../../assets/images/ingredients/Kiwi.jpg') },
+          { name: 'Erdbeeren', image: require('../../assets/images/ingredients/erdbeeren.jpg') },
+          { name: 'Trauben', image: require('../../assets/images/ingredients/Trauben.jpg') }
         ]
       },
       {
-        name: 'nuesse',
+        name: 'yogurt',
         options: [
-          { name: 'Banane', image: require('../Assets/Images/yogurt.jpg') },
-          { name: 'Kiwi', image: require('../Assets/Images/yogurt.jpg') },
-          { name: 'Mango', image: require('../Assets/Images/yogurt.jpg') }
+          { name: 'Nature Yogurt', image: require('../../assets/images/ingredients/Joghurt_Weiss.jpg') },
+          { name: 'Honig Yogurt', image: require('../../assets/images/ingredients/Joghurt_Orange.jpg') },
+          { name: 'Heidelbeer Yogurt', image: require('../../assets/images/ingredients/Joghurt_Pink.jpg') }
         ]
       },
       {
-        name: 'confiture',
+        name: 'marmelade',
         options: [
-          { name: 'Banane', image: require('../Assets/Images/yogurt.jpg') },
-          { name: 'Kiwi', image: require('../Assets/Images/yogurt.jpg') },
-          { name: 'Mango', image: require('../Assets/Images/yogurt.jpg') }
+          { name: 'Marmelade', image: require('../../assets/images/ingredients/Marmelade.jpg') },
+          { name: 'Marmelade Orange', image: require('../../assets/images/ingredients/Marmelade_orange.jpg') }
         ]
       }
     ];
@@ -70,27 +71,35 @@ export default class YogurtMixer extends Component {
     });
   }
 
+  sendMyYogurt = () => {
+    console.warn('DO STUFF!!!');
+  }
+
   render = () => {
     return (
       <View>
-        {
-          this.yogurtOptions.map(layer => (
-            <SwipeCarousel
-              key={layer.name}
-              style={StyleSheet.flatten(styles.carousel)}
-              update={this.updateMyYogurt}
-              layer={layer.name}
-            >
-              {
-                layer.options.map(option => (
-                  <View key={option.name} style={styles.panel}>
-                    <Image style={styles.image} source={option.image} />
-                  </View>
-                ))
-              }
-            </SwipeCarousel>
-          ))
-        }
+        <NavigationBar title="Create your own" />
+        <View style={{ marginBottom: 20 }}>
+          {
+            this.yogurtOptions.map(layer => (
+              <SwipeCarousel
+                key={layer.name}
+                style={StyleSheet.flatten(styles.carousel)}
+                update={this.updateMyYogurt}
+                layer={layer.name}
+              >
+                {
+                  layer.options.map(option => (
+                    <View key={option.name} style={styles.panel}>
+                      <Image style={styles.image} source={option.image} />
+                    </View>
+                  ))
+                }
+              </SwipeCarousel>
+            ))
+          }
+        </View>
+        <Button text="Choose pickup time" onPress={this.sendMyYogurt} />
       </View>
     );
   }
