@@ -13,30 +13,83 @@ import * as appActions from '../Actions/appActions';
 import { NavigationBar } from './Elements/NavigationBar';
 import { Button } from './Elements/Button';
 
-const OrderSelection = ({ nextStep, prevStep }) => {
+const setDirectOrder = (order, nextStep, updateOrder) => {
+  updateOrder({
+    yogurtOrder: order
+  });
+  nextStep();
+  nextStep();
+};
+
+const OrderSelection = ({ nextStep, prevStep, updateOrder }) => {
   return (
     <View>
       <NavigationBar title="Order" prevStep={prevStep} />
       <View style={{ margin: 10 }}>
         <Text style={{ fontWeight: 'bold', fontSize: 18 }}>Recently ordered</Text>
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-          <Image
-            resizeMode="contain"
-            style={styles.image}
-            source={require('../../assets/images/Yoghurt-1.png')}
-          />
-          <Image
-            resizeMode="contain"
-            style={styles.image}
-            source={require('../../assets/images/Yoghurt-2.png')}
-          />
+          <TouchableOpacity
+            onPress={() => setDirectOrder({
+              cereal: 'YoBar Muesli',
+              fruits: 'Strawberries',
+              yogurt: 'Nature Yogurt',
+              sauce: 'Strawberry Sauce'
+            }, nextStep, updateOrder)}
+            style={styles.image}>
+            <Image
+              resizeMode="contain"
+              style={styles.image}
+              source={require('../../assets/images/Yoghurt-1.png')}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => setDirectOrder({
+              cereal: 'YoBar Muesli',
+              fruits: 'Mango',
+              yogurt: 'Nature Yogurt',
+              sauce: 'Honey Sauce'
+            }, nextStep, updateOrder)}
+            style={styles.image}>
+            <Image
+              resizeMode="contain"
+              style={styles.image}
+              source={require('../../assets/images/Yoghurt-2.png')}
+            />
+          </TouchableOpacity>
         </View>
         <View style={{ marginTop: 10 }}>
           <Button text="Create your own" onPress={() => nextStep()} />
         </View>
-        <View style={{ marginTop: 10, flex: 1, flexDirection: 'row', alignItems: 'center' }}>
-          <Button text="Classics" />
-          <Button text="Seasonal Hits" />
+        <Text style={{ fontWeight: 'bold', fontSize: 18, marginTop: 40 }}>Best sellers</Text>
+        <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+          <TouchableOpacity
+            onPress={() => setDirectOrder({
+              cereal: 'YoBar Muesli',
+              fruits: 'Avocado',
+              yogurt: 'Nature Yogurt',
+              sauce: 'Mango Sauce'
+            }, nextStep, updateOrder)}
+            style={styles.image}>
+            <Image
+              resizeMode="contain"
+              style={styles.image}
+              source={require('../../assets/images/AvocadoAffair.png')}
+            />
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={() => setDirectOrder({
+              cereal: 'YoBar Muesli',
+              fruits: 'Kiwi',
+              yogurt: 'Forest fruits yogurt',
+              sauce: 'Raspberry Sauce'
+            }, nextStep, updateOrder)}
+            style={styles.image}>
+            <Image
+              resizeMode="contain"
+              style={styles.image}
+              source={require('../../assets/images/KiwiKarma.png')}
+            />
+          </TouchableOpacity>
         </View>
       </View>
     </View>
