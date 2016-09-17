@@ -31,8 +31,8 @@ export class YogurtMixer extends Component {
           { name: 'Haferflocken', image: require('../../assets/images/ingredients/Haferflocken.jpg') }
         ]
       },
-      fruechte: {
-        name: 'fruechte',
+      fruits: {
+        name: 'fruits',
         options: [
           { name: 'Banane', image: require('../../assets/images/ingredients/bananen.jpg') },
           { name: 'Kiwi', image: require('../../assets/images/ingredients/Kiwi.jpg') },
@@ -48,11 +48,11 @@ export class YogurtMixer extends Component {
           { name: 'Heidelbeer Yogurt', image: require('../../assets/images/ingredients/Joghurt_Pink.jpg') }
         ]
       },
-      marmelade: {
-        name: 'marmelade',
+      sauce: {
+        name: 'sauce',
         options: [
-          { name: 'Marmelade', image: require('../../assets/images/ingredients/Marmelade.jpg') },
-          { name: 'Marmelade Orange', image: require('../../assets/images/ingredients/Marmelade_orange.jpg') }
+          { name: 'Himbeer Sauce', image: require('../../assets/images/ingredients/Marmelade.jpg') },
+          { name: 'Orangen Sauce', image: require('../../assets/images/ingredients/Marmelade_orange.jpg') }
         ]
       }
     };
