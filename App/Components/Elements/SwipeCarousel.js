@@ -84,8 +84,8 @@ export default class SwipeCarousel extends Component {
     }, this.props.style);
 
     // Indicators true/false
-    this._indicators = (typeof this.props.indicators === 'undefined') ?
-      true : this.props.indicators;
+    this._indicators = (this.props.indicators) ?
+      this.props.indicators : false;
     this._indicatorsHeight = 40; // Indicators height size
 
     // This is object to render
