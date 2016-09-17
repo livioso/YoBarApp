@@ -17,7 +17,7 @@ const Order = new Record({
 
 const initialState = {
   orderingStep: 0,
-  order: new Order({})
+  order: new Order()
 };
 
 const app = (state = initialState, action) => { // eslint-disable-line complexity
@@ -40,10 +40,15 @@ const app = (state = initialState, action) => { // eslint-disable-line complexit
 };
 
 const updateOrder = (currentOrder, orderUpdates) => {
- // eslint-disable-next-line
+  // eslint-disable-next-line
+  let updatedOrder = currentOrder;
+
+  // eslint-disable-next-line
   for(const propertyName in orderUpdates) {
-    currentOrder.set(propertyName, orderUpdates[propertyName]);
+    updatedOrder = updatedOrder.set(propertyName, orderUpdates[propertyName]);
   }
+
+  return updatedOrder;
 };
 
 export { app as default };
