@@ -4,6 +4,7 @@ import moment from 'moment';
 import {
   UPDATE_ORDER,
   PLACE_ORDER,
+  NEXT_STEP,
 } from '../Actions/appActions';
 
 const Order = new Record({
@@ -33,6 +34,12 @@ const app = (state = initialState, action) => { // eslint-disable-line complexit
       return {
         ...state,
         order: updateOrder(state.order, { orderPlaced: true })
+      };
+    }
+    case NEXT_STEP: {
+      return {
+        ...state,
+        orderingStep: state.orderingStep + 1
       };
     }
     default:
