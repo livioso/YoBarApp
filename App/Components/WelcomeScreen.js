@@ -19,7 +19,7 @@ const citySelection = (city, nextStep, updateOrder) => {
   nextStep();
 };
 
-const WelcomeScreen = ({ nextStep, updateOrder }) => {
+const WelcomeScreen = ({ message, nextStep, updateOrder }) => {
   return (
     <View style={styles.welcome}>
       <Image
@@ -51,7 +51,7 @@ const WelcomeScreen = ({ nextStep, updateOrder }) => {
               textAlign: 'center'
             }}
           >
-            Good Morning, Yves!
+            {message}
           </Text>
         </Image>
         <Text
