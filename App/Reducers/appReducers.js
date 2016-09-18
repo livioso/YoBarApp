@@ -21,7 +21,7 @@ const Order = new Record({
 
 const initialState = {
   orderingStep: 0,
-  message: 'Good Morning, Yves!',
+  message: 'Good Morning, Sepp Blatter!',
   order: new Order()
 };
 
@@ -43,7 +43,7 @@ const app = (state = initialState, action) => { // eslint-disable-line complexit
       if (state.orderingStep === 5) {
         return {
           ...state,
-          message: `Hi Yves, you\'re Yoghurt is ready in ${state.order.pickupLocation} at ${state.order.pickupTime}. \n\n Pickup code: #${state.order.id}`,
+          message: `Hi ${order.customer}, you\'re Yoghurt is ready in ${state.order.pickupLocation} at ${state.order.pickupTime}. \n\n Pickup code: #${state.order.id}`,
           orderingStep: 0,
         };
       }
