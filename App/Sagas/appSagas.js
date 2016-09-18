@@ -53,11 +53,15 @@ function* placeOrder() {
 
 const orderToMarkdown = order => {
   return `#🍧 New Ordr ID **${order.get('id')}**\\n` +
-    `##📝 Customer: ${order.get('customer')}\\n` +
-    `##📝 Pickup Location: ${order.get('pickupLocation')}\\n` +
+    `##👤 Customer: ${order.get('customer')}\\n` +
+    `##📍 Pickup Location: ${order.get('pickupLocation')}\\n` +
+    `##🕰 Pickup Time: ${order.get('pickupTime')}\\n` +
     `##💵 Paid: ${order.get('paid')}\\n` +
     '---˙\\n' +
-    `##Yoghurt:\\n- Beeren\\n- Saft`;
+    `##Yoghurt:\\n- Cereal: ${order.getIn(['yogurtOrder']).cereal}` +
+    `\\n- Fruits: ${order.getIn(['yogurtOrder']).fruits}` +
+    `\\n- Yogurt: ${order.getIn(['yogurtOrder']).yogurt}` +
+    `\\n- Sauce: ${order.getIn(['yogurtOrder']).sauce}`;
 };
 
 function* isOrderFinished() {
