@@ -7,6 +7,7 @@ import WelcomeScreen from './WelcomeScreen';
 import OrderSelection from './OrderSelection';
 import YogurtMixer from './YogurtMixer';
 import PickUpTime from './PickUpTime';
+import Payment from './Payment';
 import OrderConfirmation from './OrderConfirmation';
 
 const Router = ({ orderingStep }) => {
@@ -20,6 +21,8 @@ const Router = ({ orderingStep }) => {
     case 3:
       return <PickUpTime />;
     case 4:
+      return <Payment />;
+    case 5:
       return <OrderConfirmation />;
     default:
       return <WelcomeScreen />;
