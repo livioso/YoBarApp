@@ -21,7 +21,7 @@ const Order = new Record({
 
 const initialState = {
   orderingStep: 0,
-  message: 'Good Morning, Sepp Blatter!',
+  message: 'Good Morning,\nSepp Blatter!',
   order: new Order()
 };
 

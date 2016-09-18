@@ -69,7 +69,7 @@ const WelcomeScreen = ({ message, nextStep, updateOrder }) => {
         />
         <Text
           style={{
-            fontSize: 24,
+            fontSize: 20,
             textAlign: 'center'
           }}
         >
