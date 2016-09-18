@@ -36,24 +36,37 @@ const WelcomeScreen = ({ message, nextStep, updateOrder }) => {
           style={{
             justifyContent: 'center',
             alignItems: 'center',
-            height: 300,
+            height: 100,
             width: 350,
           }}
-          source={require('../../assets/images/yobar-background.png')}
+          source={require('../../assets/images/emmi_top.jpg')}
+        />
+        <Text
+          style={{
+            fontWeight: 'bold',
+            fontSize: 24,
+            backgroundColor: 'transparent',
+            alignItems: 'center',
+            textAlign: 'center',
+            marginLeft: 35,
+            marginRight: 35,
+            marginTop: 15,
+            marginBottom: 10,
+          }}
         >
-          <Text
-            style={{
-              fontWeight: 'bold',
-              fontSize: 24,
-              backgroundColor: 'transparent',
-              width: 200,
-              alignItems: 'center',
-              textAlign: 'center'
-            }}
-          >
-            {message}
-          </Text>
-        </Image>
+        {message}
+        </Text>
+        <Image
+          resizeMode="contain"
+          style={{
+            justifyContent: 'center',
+            alignItems: 'center',
+            height: 115,
+            width: 350,
+            marginBottom: 15
+          }}
+          source={require('../../assets/images/emmi_bottom.jpg')}
+        />
         <Text
           style={{
             fontSize: 24,
