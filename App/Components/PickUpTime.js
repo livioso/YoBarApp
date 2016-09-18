@@ -53,7 +53,7 @@ class PickUpTime extends React.Component {
           }}
         >
           <View>
-            <Text style={styles.heading}>Your Yoghurt: </Text>
+            <Text style={styles.heading}>Your Yogurt: </Text>
             <SummaryItem title="Cereal" text={this.props.order.yogurtOrder.cereal} />
             <SummaryItem title="Fruits" text={this.props.order.yogurtOrder.fruits} />
             <SummaryItem title="Yogurt" text={this.props.order.yogurtOrder.yogurt} />
