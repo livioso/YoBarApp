@@ -25,7 +25,8 @@ const WelcomeScreen = ({ message, nextStep, updateOrder }) => {
       <Image
         resizeMode="contain"
         style={{
-          height: 150,
+          marginTop: 10,
+          height: 120,
           width: 130,
         }}
         source={require('../../assets/images/yobar-logo.png')}
@@ -79,7 +80,7 @@ const WelcomeScreen = ({ message, nextStep, updateOrder }) => {
           style={{
             flex: 1,
             flexDirection: 'row',
-            marginTop: 30,
+            marginTop: 20,
           }}
         >
           <Button text="Luzern" onPress={() => citySelection('Luzern', nextStep, updateOrder)} />
