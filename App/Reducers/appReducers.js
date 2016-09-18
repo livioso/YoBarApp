@@ -9,12 +9,13 @@ import {
 } from '../Actions/appActions';
 
 const Order = new Record({
-  id: '99',
+  id: 'Loading ...',
   customer: 'Sepp Blatter',
   pickupLocation: 'Zurich',
   pickupTime: '',
   paid: false, // user already paid ;)
   orderPlaced: false,
+  orderFinished: false,
   yogurtOrder: undefined,
 });
 
