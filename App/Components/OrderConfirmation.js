@@ -4,7 +4,8 @@ import { bindActionCreators } from 'redux';
 import React from 'react';
 import {
   View,
-  Text
+  Text,
+  StyleSheet
 } from 'react-native';
 
 import { NavigationBar } from './Elements/NavigationBar';
@@ -24,8 +25,16 @@ const OrderConfirmation = ({ order, nextStep, prevStep }) => {
   return (
     <View>
       <NavigationBar title="Order confirmation" prevStep={prevStep} />
-      <View style={{ justifyContent: 'center', alignItems: 'center', marginTop: 100 }}>
-        <Text style={{ fontSize: 24 }}>Great, we'll have it ready at {order.pickupTime}</Text>
+      <View
+        style={{
+          justifyContent: 'center',
+          alignItems: 'center',
+          marginTop: 100,
+          marginLeft: 30,
+          marginRight: 30,
+        }}>
+        <Text style={styles.text}>Great!</Text>
+        <Text style={styles.text}>We'll have your Yogurt ready at {order.pickupTime} in {order.pickupLocation}</Text>
         <View style={{ marginTop: 20 }}>
           <Text style={{ fontSize: 24 }}>
             Your order ID is <Text style={{ fontWeight: 'bold' }}>{order.id}</Text>
@@ -44,6 +53,14 @@ const OrderConfirmation = ({ order, nextStep, prevStep }) => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  text: {
+    fontSize: 24,
+    textAlign: 'center'
+  }
+});
+
 
 // connect view with its data
 export default connect(
