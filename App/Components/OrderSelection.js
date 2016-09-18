@@ -26,7 +26,7 @@ const OrderSelection = ({ nextStep, prevStep, updateOrder }) => {
     <View>
       <NavigationBar title="Order" prevStep={prevStep} />
       <View style={{ margin: 10 }}>
-        <Text style={{ fontWeight: 'bold', fontSize: 18 }}>Recently ordered</Text>
+        <Text style={{ fontWeight: 'bold', fontSize: 18, textAlign: 'center', marginTop: 15 }}>Recently ordered</Text>
         <View style={{ flexDirection: 'row', alignItems: 'center', marginLeft: 15 }}>
           <TouchableOpacity
             onPress={() => setDirectOrder({
@@ -60,7 +60,7 @@ const OrderSelection = ({ nextStep, prevStep, updateOrder }) => {
         <View style={{ marginTop: 10 }}>
           <Button text="Create your own" onPress={() => nextStep()} />
         </View>
-        <Text style={{ fontWeight: 'bold', fontSize: 18, marginTop: 40 }}>Best sellers</Text>
+        <Text style={{ fontWeight: 'bold', fontSize: 18, marginTop: 40, textAlign: 'center' }}>Best sellers</Text>
         <View style={{ flexDirection: 'row', alignItems: 'center', marginLeft: 15 }}>
           <TouchableOpacity
             onPress={() => setDirectOrder({
