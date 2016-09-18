@@ -13,7 +13,7 @@ const Order = new Record({
   customer: 'Sepp Blatter',
   pickupLocation: 'Zurich',
   pickupTime: '',
-  paid: false, // user already paid ;)
+  paid: false,
   orderPlaced: false,
   orderFinished: false,
   yogurtOrder: undefined,

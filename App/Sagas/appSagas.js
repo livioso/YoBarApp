@@ -87,7 +87,7 @@ function* pullOrderStatus() {
     };
 
     // room must be provided as a parameter :)
-    const requestUrl = `${apiMessages}?roomId=${apiOrderRoomId}&max=10`;
+    const requestUrl = `${apiMessages}?roomId=${apiOrderRoomId}&max=5`;
     const response = yield call(request, requestUrl, payload);
     const { data: messages, error } = response;
     const isResponseOK = error === undefined || error === null;
@@ -99,8 +99,9 @@ function* pullOrderStatus() {
         yield delay(300);
         // yield put(updateOrder({ orderPlaced: true }));
       }
-      if (messages.items[0].text === `/remove ${id}`) {
-        yield put(updateFinished({ orderFinished: true }));
+      const { order } = yield select(state => state.app);
+      if (messages.items[0].text === `/done ${order.id}`) {
+        yield put(updateOrder({ orderFinished: true }));
       }
     } else {
       alert('Sorry, something went wrong :(');
