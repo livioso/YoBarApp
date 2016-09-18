@@ -6,9 +6,9 @@ import {
   Image,
   StyleSheet,
   Dimensions,
-  Text
+  Text,
+  TouchableOpacity
 } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
 
 import * as appActions from '../Actions/appActions';
 import SwipeCarousel from './Elements/SwipeCarousel';
@@ -21,7 +21,8 @@ export class YogurtMixer extends Component {
     super(props);
     /* eslint-disable immutable/no-mutation, no-underscore-dangle */
     this.state = {
-      myYogurt: {}
+      myYogurt: {},
+      info: []
     };
 
     this.yogurtOptions = {
@@ -54,7 +55,7 @@ export class YogurtMixer extends Component {
         name: 'sauce',
         options: [
           { name: 'Himbeer Sauce', image: require('../../assets/images/ingredients/Marmelade.jpg') },
-          { name: 'Orangen Sauce', image: require('../../assets/images/ingredients/Marmelade_orange.jpg') }
+          { name: 'Aprikosen Sauce', image: require('../../assets/images/ingredients/Marmelade_orange.jpg') }
         ]
       }
     };
@@ -86,6 +87,19 @@ export class YogurtMixer extends Component {
     this.props.nextStep();
   }
 
+  setInfo = (layer) => {
+    const newInfo = this.state.info;
+    const index = newInfo.indexOf(layer);
+    if (index > -1) {
+      newInfo.splice(index, 1);
+    } else {
+      newInfo.push(layer);
+    }
+    this.setState({
+      info: newInfo
+    });
+  }
+
   render = () => {
     return (
       <View>
@@ -103,11 +117,33 @@ export class YogurtMixer extends Component {
                 this.yogurtOptions[layer].options.map(option => (
                   <View key={option.name} style={styles.panel}>
                     <Image style={styles.image} source={option.image}>
-                      <LinearGradient colors={['transparent', '#df8cce']} locations={[0, 1]} style={styles.linearGradient}>
-                        <Text style={styles.text}>
-                          {option.name}
-                        </Text>
-                      </LinearGradient>
+                      {
+                        (this.state.info.indexOf(layer) > -1) ?
+                        (
+                          <TouchableOpacity
+                            style={styles.textBoxContainer}
+                            activeOpacity={0.8}
+                            onPress={() => this.setInfo(layer)}
+                          >
+                            <View style={styles.textBox}>
+                              <Text style={styles.text}>
+                                {option.name}
+                              </Text>
+                            </View>
+                          </TouchableOpacity>
+                        ) :
+                        (
+                          <TouchableOpacity
+                            style={styles.infoToggle}
+                            activeOpacity={0.6}
+                            onPress={() => this.setInfo(layer)}
+                          >
+                            <Text style={[styles.text, {fontSize: 15}]}>
+                              i
+                            </Text>
+                          </TouchableOpacity>
+                        )
+                      }
                     </Image>
                   </View>
                 ))
@@ -140,9 +176,31 @@ const styles = StyleSheet.create({
     width: window.width,
     height: panelHeight,
     resizeMode: 'cover',
-    flexDirection: 'column',
-    justifyContent: 'flex-end',
+    flexDirection: 'row',
+    justifyContent: 'center',
     alignItems: 'center',
+  },
+  textBoxContainer: {
+    flex: 1,
+    height: panelHeight - 50,
+    marginLeft: 25,
+    marginRight: 25,
+
+  },
+  textBox: {
+    flex: 1,
+    backgroundColor: '#D12CAD',
+    opacity: 0.8,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  infoToggle: {
+    height: 20,
+    width: 20,
+    backgroundColor: '#D12CAD',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10
   },
   linearGradient: {
     alignItems: 'center',
@@ -152,10 +210,9 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   text: {
+    fontSize: 20,
     color: '#fff',
     fontWeight: 'bold',
-    backgroundColor: 'transparent',
-    marginBottom: 5,
   },
 });
 
