@@ -67,7 +67,6 @@ class PickUpTime extends React.Component {
         <Button
           text="Order and choose payment"
           onPress={() => {
-            this.props.placeOrder();
             this.dateSelection(this.props.nextStep, this.props.updateOrder);
           }}
         />

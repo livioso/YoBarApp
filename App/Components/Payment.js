@@ -11,29 +11,30 @@ import * as appActions from '../Actions/appActions';
 import { NavigationBar } from './Elements/NavigationBar';
 import { Button } from './Elements/Button';
 
-const Payment = ({ prevStep, nextStep, updateOrder }) => {
+const Payment = ({ prevStep, nextStep, updateOrder, placeOrder }) => {
   return (
     <View>
       <NavigationBar title="Choose payment" prevStep={prevStep} />
       <CreditCard />
       <Button
         text="Pay with CreditCard"
-        onPress={() => setPayment(true, nextStep, updateOrder)}
+        onPress={() => setPayment(true, nextStep, updateOrder, placeOrder)}
         style={{ marginTop: 50 }}
       />
       <Button
         text="Pay at the store"
-        onPress={() => setPayment(false, nextStep, updateOrder)}
+        onPress={() => setPayment(false, nextStep, updateOrder, placeOrder)}
         style={{ marginTop: 20 }}
       />
     </View>
   );
 };
 
-const setPayment = (paid, nextStep, updateOrder) => {
+const setPayment = (paid, nextStep, updateOrder, placeOrder) => {
   updateOrder({
     paid
   });
+  placeOrder();
   nextStep();
 };
 
